@@ -1,0 +1,236 @@
+/* Base styles */
+@font-face {
+    font-family: "NotoSans-Regular.ttf";
+    src: url(./assets/fonts/static/NotoSans-Regular.ttf);
+}
+@font-face {
+    font-family: "NotoSans-Medium.ttf";
+    src: url(./assets/fonts/static/NotoSans-Medium.ttf);
+}
+@font-face {
+    font-family: "NotoSans-Bold.ttf";
+    src: url(./assets/fonts/static/NotoSans-Bold.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+--darkBg: #050b21;
+--card-bg: #1e293b;
+--gray-bg: #1f2535;
+--text: #f1f5f9;
+--muted: #cbd5e1;
+--accent: #c8453f;
+--gray-border: #4d5265; 
+}
+body.light {
+--darkBg: #ecf5fc;
+  --card-bg: #ffffff;
+  --gray-bg: #fcfdff;
+  --text: #0f172a;
+  --textDark: #050b21;
+  --muted: #475569;
+  --accent: #c8453f;
+  --gray-border: #ededed;
+}
+
+body {
+  font-family: 'NotoSans-Regular.ttf', sans-serif;
+  background: var(--darkBg);
+  color: var(--text);
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  position: relative;
+}
+
+/* Header */
+header {
+    background-color: var(--gray-bg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 5px;
+  border-radius: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  transition: ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo img {
+width: 100%;
+height: 100%;
+}
+
+#themeToggle {
+  cursor: pointer;
+  background-color: var(--gray-border);
+  padding: 5px;
+  border-radius: 20%;
+  display: flex
+;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Filter buttons */
+.filterDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.filterDiv h1 {
+  font-family: "NotoSans-Bold.ttf", serif;
+}
+.filter {
+  margin: 20px 0;
+}
+
+.filter button {
+  background: #1e293b;
+  color: #f8fafc;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s ease;
+}
+.filter button.light {
+  background-color: var(--gray-bg);
+  color: var(--textDark);
+}
+
+.filter .active {
+  background: var(--accent) !important;
+}
+
+/* Extension Grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 10px;
+}
+
+/* Card */
+.extension-card {
+  background: var(--gray-bg);
+  padding: 16px;
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  transition: 0.3s;
+  border: .1px solid var(--gray-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.cardContent {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+.cardText h3 {
+margin-bottom: 10px;
+font-family: "NotoSans-Bold.ttf", serif";
+}
+.extension-card.disabled {
+  opacity: 0.5;
+}
+
+.extension-card img {
+  width: 40px;
+  height: 40px;
+}
+
+.extension-card h3 {
+  font-size: 18px;
+  font-family: "NotoSans-Bold.ttf", serif";
+}
+
+.extension-card p {
+  font-size: 16px;
+  color: var(--muted);
+}
+
+/* Buttons */
+.extension-card .buttonDiv {
+    display: flex;
+    width: 100%;justify-content: space-between;
+    align-items: center;
+}
+
+.removeBtn {
+  background: transparent ;
+  padding: 6px 10px;
+  border: 1px solid var(--gray-border);
+  border-radius: 15px;
+  font-family: "NotoSans-Regular.ttf", serif;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--text);
+}
+.removeBtn.light {
+  color: var(--textDark);
+}
+
+.removeBtn:hover {
+  background-color: var(--accent);
+  color: var(--text);
+}
+.extension-card:focus .removeBtn {
+  border: 1px solid var(--accent);
+}
+
+.extension-card .toggle {
+  width: 40px;
+  height: 20px;
+  border-radius: 20px;
+  background: #475569;
+  cursor: pointer;
+  position: relative;
+}
+
+.extension-card .toggle::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  background: var(--text);
+  position: absolute;
+  border-radius: 50%;
+  top: 2px;
+  left: 2px;
+  transition: 0.3s;
+}
+
+.extension-card.active .toggle {
+  background: var(--accent);
+}
+
+.extension-card.active .toggle::before {
+  transform: translateX(20px);
+}
+
+@media screen and  (max-width: 600px){
+  body {
+    padding: 10px 10px 40px;
+  }
+  .filterDiv {
+    flex-direction: column;
+  }
+}
